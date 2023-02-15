@@ -1,0 +1,286 @@
+/*                                          login                                           */
+
+#login{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.93);
+    width: 100%;
+    height: 100vh;
+}
+
+#login .appname{
+    font-size: 24px;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 25px);/*(100% - 50px)/2*/
+    top: 20px;
+    color: cyan;
+}
+
+#login #loginChart{
+    width: 500px;
+    height: 500px;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    position: relative;
+    left: calc(50% - 252px);/*(100% - (500px+2px+2px))/2*/
+    top: calc(50vh - 252px);/*(100vh - (500px+2px+2px))/2*/
+}
+
+#login #loginChart input{
+    width: 300px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 150px);/*(100% - 300px)/2*/
+}
+
+#login #loginChart #username{
+    top: 90px;
+}
+
+#login #loginChart #password{
+    top: 160px;
+}
+
+#login #loginChart h1{
+    position: absolute;
+    width: 80px;
+    /*background-color: red;*/
+    position: absolute;
+    left: calc(50% - 40px);/*(100% - 80px)/2*/
+    top: 10px;
+    color: whitesmoke;
+}
+
+#login #loginChart #loginbtn{
+    width: 180px;
+    height: 35px;
+    background-color: cyan;
+    color: black;
+    border: 2px solid olivedrab;
+    position: absolute;
+    left: calc(50% - 90px);/*(100% - 180px)/2*/
+    top: 300px;
+    cursor: pointer;
+}
+
+#login #loginChart #loginbtn:hover{
+    background-color: olivedrab;
+    color: antiquewhite;
+}
+
+#login #loginChart #dhacc{
+    width: 200px;
+    color: whitesmoke;
+    position: absolute;
+    top: 400px;
+    left: 150px;/*(500px - 200px)/2*/
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+/*                                          signup                                           */
+
+#signup{
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.93);
+}
+
+#signup .appname{
+    font-size: 24px;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 25px);/*(100% - 50px)/2*/
+    top: 20px;
+    color: cyan;
+}
+
+#signup #signupChart{
+    width: 500px;
+    height: 500px;
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    position: relative;
+    left: calc(50% - 252px);/*(100% - 500px)/2*/
+    top: calc(50vh - 252px);/*(100vh - 500px)/2*/
+}
+
+#signup #signupChart input{
+    width: 300px;
+    height: 30px;
+    position: absolute;
+    left: calc(50% - 150px);/*(100% - 300px)/2*/
+}
+
+#signup #signupChart #usernamesignup{
+    top: 90px;
+}
+
+#signup #signupChart #passwordsignup{
+    top: 160px;
+}
+
+#signup #signupChart h1{
+    position: absolute;
+    width: 120px;
+    /*background-color: red;*/
+    position: absolute;
+    left: calc(50% - 60px);/*(100% - 120px)/2*/
+    top: 10px;
+    color: whitesmoke;
+}
+
+#signup #signupChart #signupbtn{
+    width: 180px;
+    height: 35px;
+    background-color: cyan;
+    color: black;
+    border: 2px solid olivedrab;
+    position: absolute;
+    left: calc(50% - 90px);/*(100% - 180px)/2*/
+    top: 300px;
+    cursor: pointer;
+}
+
+#signup #signupChart #signupbtn:hover{
+    background-color: olivedrab;
+    color: antiquewhite;
+}
+#signup #signupChart #ahac{
+    width: 200px;
+    color: whitesmoke;
+    position: absolute;
+    top: 400px;
+    left: 150px;/*(500px - 200px)/2*/
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+/*                                          screenSize < 506px                                       */
+
+@media(max-width:506px){
+    #login #loginChart{
+        width: 300px;
+        height: 500px;
+        border: 2px solid whitesmoke;
+        border-radius: 20px;
+        position: relative;
+        left: calc(50% - 152px);/*(100% - (300px+2px+2px))/2*/
+        top: calc(50vh - 252px);/*(100vh - (500px+2px+2px))/2*/
+    }
+
+    #login #loginChart input{
+        width: 280px;
+        height: 30px;
+        position: absolute;
+        left: calc(50% - 140px);/*(100% - 280px)/2*/
+    }
+
+    #login #loginChart #dhacc{
+        width: 200px;
+        color: whitesmoke;
+        position: absolute;
+        top: 400px;
+        left: 50px;/*(300px - 200px)/2*/
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+
+    #signup #signupChart{
+        width: 300px;
+        height: 500px;
+        border: 2px solid whitesmoke;
+        border-radius: 20px;
+        position: relative;
+        left: calc(50% - 152px);
+        top: calc(50vh - 252px);
+    
+    }
+
+    #signup #signupChart input{
+        width: 280px;
+        height: 30px;
+        position: absolute;
+        left: calc(50% - 140px);/*(100% - 280px)/2*/
+    }
+
+    #signup #signupChart #ahac{
+        width: 200px;
+        color: whitesmoke;
+        position: absolute;
+        top: 400px;
+        left: 50px;/*(300px - 200px)/2*/
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+
+/*                                          screenSize < 310px                                       */
+
+@media(max-width:310px){
+    #login #loginChart{
+        width: 260px;
+        height: 500px;
+        border: 2px solid whitesmoke;
+        border-radius: 20px;
+        position: relative;
+        left: calc(50% - 132px);/*(100% - (260px+2px+2px))/2*/
+        top: calc(50vh - 252px);/*(100vh - (500px+2px+2px))/2*/
+    
+    }
+
+    #login #loginChart input{
+        width: 250px;
+        height: 30px;
+        position: absolute;
+        left: calc(50% - 125px);/*(100% - 250px)/2*/
+    }
+
+    #login #loginChart #dhacc{
+        width: 200px;
+        color: whitesmoke;
+        position: absolute;
+        top: 400px;
+        left: 30px;/*(260px - 200px)/2*/
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+
+
+    #signup #signupChart{
+        width: 260px;
+        height: 500px;
+        border: 2px solid whitesmoke;
+        border-radius: 20px;
+        position: relative;
+        left: calc(50% - 132px);
+        top: calc(50vh - 252px);
+    
+    }
+    #signup #signupChart input{
+        width: 250px;
+        height: 30px;
+        position: absolute;
+        left: calc(50% - 125px);/*(100% - 250px)/2*/
+    }
+    #signup #signupChart #ahac{
+        width: 200px;
+        color: whitesmoke;
+        position: absolute;
+        top: 400px;
+        left: 30px;/*(260px - 200px)/2*/
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

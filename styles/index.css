@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*bu vacibdi, cunki bu olmasa input-da meselen sol teref sagdan cox yer tutur, yeni ince deqiqlik olmur*/
+}
+
+body{
+    width: 100%;
+    position: relative;
+}

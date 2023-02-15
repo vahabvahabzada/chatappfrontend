@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.mycontainer{
+    /*position: relative;
+    width: 100%;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.93) !important;
+    min-height: 100vh;*/
+
+    background-color: /*#6A8A82*/rgba(0, 0, 0, 0.93);
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    padding-bottom: 80px;
+    
+    /*min-height: calc(100vh - 50px);*/
+    min-height: 100vh;
+}
+.navbar{
+    position: relative;
+    background-color: black;
+    
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+.navbar-brand{
+    color: cyan;
+}
+.navbar-brand:hover{
+    color: cyan;
+}
+.navbar-toggler{
+    background-color: cyan;
+}
+.nav-link{
+    color: whitesmoke !important;
+}
+
+
+#userprofilename{
+    color: whitesmoke;
+    height: 20px;
+    position: relative;
+    top: 6px;
+}
+
+
+
+
+.mycontainer .chatman{
+    position: relative;
+    background-color: black;
+    color: whitesmoke;
+    width: 80%;
+    top: /*56px*/70px;
+    left: 10%;/*(100% - 80%)/2*/
+    border-radius: 10px;
+    height: auto;
+    word-wrap: break-word;
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.chatmanname{
+    background-color: cyan;
+    border-radius: 10px 10px 0px 0px;
+    color: black;
+    text-align: center;
+    word-wrap: break-word;
+}
