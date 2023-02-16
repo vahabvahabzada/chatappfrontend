@@ -27,7 +27,8 @@ function loadChatList() {
 
                 let platestmsg = document.createElement("p");
                 platestmsg.setAttribute("class", "latesmsg");
-                platestmsg.innerHTML = item["mesgpreview"];
+                //platestmsg.innerHTML = item["mesgpreview"];
+                platestmsg.innerHTML= String.fromCharCode(item["mesgpreview"]);
                 divContact.addEventListener("click", () => {
                     localStorage.setItem("target", item["contactname"]);
                     location.href = "https://frontendvla.onrender.com/messaging.html";
