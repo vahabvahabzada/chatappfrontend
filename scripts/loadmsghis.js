@@ -41,6 +41,6 @@ function loadMessageHistory() {
 }
 
 loadMessageHistory();
-document.querySelector("#id").addEventListener("click",()=>{
+document.querySelector("#home").addEventListener("click",()=>{
     parent.location="https://frontendvla.onrender.com/home.html";
 })
