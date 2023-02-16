@@ -31,7 +31,8 @@ function loadMessageHistory() {
                     if (localStorage.getItem("target") !== item["from"]) {//demeli mesaj geden mesajdi
                         p.setAttribute("class", "messageout");
                     }
-                    p.innerHTML = item["body"];
+                    //p.innerHTML = item["body"];
+                    p.textContent=item["body"];
                     contact.append(p);
                     //contact.appendChild(p);
                 })
