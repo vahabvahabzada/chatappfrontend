@@ -33,8 +33,7 @@ export function loadPartialNewMessages(counter) {
                         if (item["from"] !== localStorage.getItem("target")) {
                             p.setAttribute("class", "messageout");
                         }
-                        //p.innerHTML = item["body"];
-                        p.textContent=item["body"];
+                        p.innerHTML = item["body"];
                         //contact.appendChild(p);
                         contact.append(p);
                     })
