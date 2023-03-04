@@ -1,52 +1,38 @@
-import { sendMessage } from "./sendmessage.js";
-
-export function loadPartialNewMessages(counter) {
-    var authHeader = localStorage.getItem("token");
-    var partLoadId;
-
-    fetch("https://backendvla.onrender.com/msgprtlhis", {
-        method: 'POST',
-        headers: {
-            'authorization': 'Bearer ' + authHeader,
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+export function loadPartialMesgHis(){
+    fetch("http://localhost:8080/msgprtlhis",{
+        method:'POST',
+        headers:{
+            'authorization':'Bearer '+localStorage.getItem("token"),
+            'Content-Type':'application/json'
         },
-        body: "counter=" + counter + "&kime=" + localStorage.getItem("target")
+        body:JSON.stringify({"kime":localStorage.getItem("target")})
     })
-        .then(resp => resp.json())
-        .then(data => {
-            ////console.log(data);
-            if (data.length !== 0) {
-                //console.log("new message ");
-
-                //saygac=saygac+data.length;
-                //console.log("partloadmsghis yoxlama:saygac=" + counter);
-
-                //counter = counter + data.length;
-
-                var contact = document.querySelector("#con");
-                if (contact !== null) {
-                    data.forEach(item => {
-                        var p = document.createElement("p");
-                        if (item["from"] === localStorage.getItem("target")) {
-                            p.setAttribute("class", "messagein");
-                        }
-                        if (item["from"] !== localStorage.getItem("target")) {
-                            p.setAttribute("class", "messageout");
-                        }
-                        p.innerHTML = item["body"];
-                        //contact.appendChild(p);
-                        contact.append(p);
-                    })
-                    counter = counter + data.length;
-                }
-            }
-            partLoadId = setTimeout(loadPartialNewMessages(counter),/*1000*/ /*3000*/2000);
-        })
-
-    return partLoadId;
+    .then(resp=>resp.json())
+    .then(data=>{
+        console.log(data);
+        data.forEach(element => {
+            messageMapper(element);
+        });
+    })
 }
 
 
-export function getSaygacValue(eded) {
-    sendMessage(eded);
+function messageMapper(message){
+    var latestMessage=document.querySelector("p:last-child");
+    console.log(latestMessage);
+    if(message["mbody"]!==latestMessage.textContent){
+    var con=document.getElementById("con");
+    var mesaj=document.createElement("p");
+    mesaj.textContent=message["mbody"];
+    if(message["mfrom"]===localStorage.getItem("username")){//demeli mesaj geden mesajdi
+        mesaj.setAttribute("class","messageout");
+    }
+    if(message["mfrom"]===localStorage.getItem("target")){//demeli mesaj gelen mesajdi
+        mesaj.setAttribute("class","messagein");       
+    }
+    con.appendChild(mesaj);
 }
+}
+
+
+//setInterval(loadPartialMesgHis,2000);

@@ -1,16 +1,22 @@
 function logout() {
     document.getElementById("logoutbtn").addEventListener("click", () => {
-        fetch("https://backendvla.onrender.com/logout", {
-            method: 'GET',
-            headers: {
-                'authorization': 'Bearer ' + localStorage.getItem("token"),
-                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-            }
-        })
-        //console.log("logout works")
+        var token=localStorage.getItem("token");
         localStorage.removeItem("token");
         localStorage.removeItem("username");
-        location.replace("https://frontendvla.onrender.com/index.html");
+        fetch("http://localhost:8080/logouturl", {
+            method: 'GET',
+            headers: {
+                'authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(()=>{
+            //console.log("logout works")
+            
+            /*localStorage.removeItem("token");
+            localStorage.removeItem("username");*/
+            location.replace("http://localhost:5500/index.html");
+        })
     })
 }
 logout();

@@ -9,25 +9,25 @@ function signupController() {
                 alert("Password must contain at least 8 characters...");
             }
             else {
-                fetch("https://backendvla.onrender.com/signup", {
+                fetch("http://localhost:8080/signup", {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                        'Content-Type': 'application/json'
                     },
-                    body:"name=" + username.value + "&password=" + password.value
+                    body: JSON.stringify({"name" : username.value,"password" : password.value})
                 })
-                .then(resp => resp.text())
-                .then(data => {
-                    //console.log(data);
-                    //console.log(typeof(data));
-                    //console.log(data === 'success');
-                    if (data === 'success') {
-                        alert("Account created successfully");
-                    }
-                    else {
-                        alert("Username already have been taken,please use another username");
-                    }
-                })
+                    .then(resp => resp.text())
+                    .then(data => {
+                        //console.log(data);
+                        //console.log(typeof(data));
+                        //console.log(data === 'success');
+                        if (data === 'success') {
+                            alert("Account created successfully");
+                        }
+                        else {
+                            alert("Username already have been taken,please use another username");
+                        }
+                    })
             }
         }
         else {

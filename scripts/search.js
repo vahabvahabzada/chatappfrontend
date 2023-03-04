@@ -8,16 +8,17 @@ function searchController() {
             }
         }
         if (searchBar.value.length !== 0) {
-            fetch("https://backendvla.onrender.com/search", {
+            fetch("http://localhost:8080/search", {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    'Content-Type': 'application/json',
+                    'authorization': 'Bearer ' + localStorage.getItem("token")
                 },
-                body: "searchText=" + searchBar.value
+                body: /*"searchText=" + */searchBar.value
             })
                 .then(resp => resp.json())
                 .then(data => {
-                    //console.log(data);
+                    console.log(data);
                     //console.log(typeof(data))
                     if (data.length !== 0) {
                         //console.log(typeof (null));
@@ -40,7 +41,7 @@ function searchController() {
                                 item.addEventListener("click", () => {
                                     localStorage.setItem("target", element);
                                     //console.log(localStorage.getItem("target"));
-                                    location.href = "https://frontendvla.onrender.com/messaging.html";
+                                    location.href = "http://localhost:5500/messaging.html";
                                 })
                                 searchedDiv.append(item);
                             }

@@ -1,36 +1,45 @@
 function loadChatList() {
-    let authHeader;
+    var authHeader;
     authHeader = localStorage.getItem("token");
 
-    fetch("https://backendvla.onrender.com/ldchatlist", {
+    fetch("http://localhost:8080/ldchatlist", {
         method: 'POST',
-        credentials: "include",
+        //credentials: "include",
         headers: {
             'authorization': 'Bearer ' + authHeader,
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/json'
         }
     })
         .then(resp => resp.json())
         .then(data => {
             //console.log(data);
-            let mycontent = document.querySelector(".mycontainer");
+            var mycontent = document.querySelector(".mycontainer");
             if (document.querySelectorAll(".chatman") !== null) {
                 document.querySelectorAll(".chatman").forEach(item => item.remove());
             }
             data.forEach(item => {
-                let divContact = document.createElement("div");
+                var divContact = document.createElement("div");
                 divContact.setAttribute("class", "chatman");
 
-                let pcontact = document.createElement("p");
+                var pcontact = document.createElement("p");
                 pcontact.setAttribute("class", "chatmanname");
-                pcontact.innerHTML = item["contactname"];
-
-                let platestmsg = document.createElement("p");
+                if (localStorage.getItem("username") !== item["mto"]) {
+                    pcontact.innerHTML = item["mto"];
+                }
+                if (localStorage.getItem("username") !== item["mfrom"]) {
+                    pcontact.innerHTML = item["mfrom"];
+                }
+                var platestmsg = document.createElement("p");
                 platestmsg.setAttribute("class", "latesmsg");
-                platestmsg.innerHTML = item["mesgpreview"];
+                platestmsg.innerHTML = item["mbody"];
                 divContact.addEventListener("click", () => {
-                    localStorage.setItem("target", item["contactname"]);
-                    location.href = "https://frontendvla.onrender.com/messaging.html";
+                    if (localStorage.getItem("username") !== item["mto"]) {
+                        localStorage.setItem("target", item["mto"]);
+                    }
+                    if (localStorage.getItem("username") !== item["mfrom"]) {
+                        localStorage.setItem("target", item["mfrom"]);
+                    }
+                    location.href = "http://localhost:5500/messaging.html";
                 })
                 divContact.appendChild(pcontact);
                 divContact.appendChild(platestmsg);
@@ -38,4 +47,6 @@ function loadChatList() {
             });
         })
 }
-loadChatList();
+
+//loadChatList();
+setInterval(loadChatList,2000);

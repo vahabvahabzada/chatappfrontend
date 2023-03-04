@@ -12,32 +12,40 @@ function loginController() {
         var password = document.getElementById("password");
 
         localStorage.setItem("username", username.value);
-        var authString = username.value + ':' + password.value;//declaring authorization string
-        var encodedAuth = btoa(authString);//encoded version of authorization string
-        var authHeader = 'Basic ' + encodedAuth;
-        //var authHeader=encodedAuth;
-        //console.log(authString);
-        //console.log(authHeader);
+        
         if (username.value !== '' && password.value !== '') {
-            fetch("https://backendvla.onrender.com/auth", {
+            fetch("http://localhost:8080/auth", {
                 method: 'POST',
-                credentials: "include",
+                //credentials: "include",
                 headers: {
-                    'authorization': authHeader,
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                }
+                    //'authorization': authHeader,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ "name": username.value, "password": password.value })
             })
-                .then(resp => resp.text())
+                .then(resp =>resp.json())
                 .then(data => {
                     ////console.log(data); console.log(btoa(data));/*var token=data*/ //token=data;
-                    localStorage.setItem("token", data);
-                    if (data === 'null') {
+                    console.log(typeof(data));
+                    if(typeof(data)!=='undefined'){
+                    console.log(data);
+                    localStorage.setItem("token", data["accessToken"]);
+                    /*if (data["accessToken"] === 'null') {
                         alert('Username or password is wrong,please try again');
+                    }*/
+                    //if (data["accessToken"] !== 'null') {
+                        location.replace("http://localhost:5500/home.html");
                     }
-                    if (data !== 'null') {
-                        location.replace("https://frontendvla.onrender.com/home.html");
+                    /*else{
+                        alert('Username or password is wrong,please try again');
+                    }*/
                     }
-                })
+
+                    /*if(data===undefined){
+                        alert('Username or password is wrong,please try again');
+                    }*/
+                //}
+                )
         }
         else {
             alert("Username and password can't be empty")

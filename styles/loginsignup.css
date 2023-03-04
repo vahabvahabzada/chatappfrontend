@@ -128,10 +128,10 @@
 
 #signup #signupChart h1{
     position: absolute;
-    width: 120px;
+    width: 124px;
     /*background-color: red;*/
     position: absolute;
-    left: calc(50% - 60px);/*(100% - 120px)/2*/
+    left: calc(50% - 62px);/*(100% - 124px)/2*/
     top: 10px;
     color: whitesmoke;
 }
