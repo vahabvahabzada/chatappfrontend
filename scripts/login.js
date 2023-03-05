@@ -12,7 +12,7 @@ function loginController() {
         var password = document.getElementById("password");
 
         localStorage.setItem("username", username.value);
-        
+        var cond=false;
         if (username.value !== '' && password.value !== '') {
             fetch("http://localhost:8080/auth", {
                 method: 'POST',
@@ -23,29 +23,9 @@ function loginController() {
                 },
                 body: JSON.stringify({ "name": username.value, "password": password.value })
             })
-                .then(resp =>resp.json())
-                .then(data => {
-                    ////console.log(data); console.log(btoa(data));/*var token=data*/ //token=data;
-                    console.log(typeof(data));
-                    if(typeof(data)!=='undefined'){
-                    console.log(data);
-                    localStorage.setItem("token", data["accessToken"]);
-                    /*if (data["accessToken"] === 'null') {
-                        alert('Username or password is wrong,please try again');
-                    }*/
-                    //if (data["accessToken"] !== 'null') {
-                        location.replace("http://localhost:5500/home.html");
-                    }
-                    /*else{
-                        alert('Username or password is wrong,please try again');
-                    }*/
-                    }
 
-                    /*if(data===undefined){
-                        alert('Username or password is wrong,please try again');
-                    }*/
-                //}
-                )
+            .then(resp=>{console.log(resp);if(resp.ok){return resp.json()}})
+            .then(data=>{console.log(data);if(data!==undefined){localStorage.setItem("token",data["accessToken"]);location.replace("http://localhost:5500/home.html")}else{alert("Username or password is wrong!Please try again...")}})
         }
         else {
             alert("Username and password can't be empty")
